@@ -1,0 +1,211 @@
+version: 2
+
+models:
+  - name: essd_ghg_data
+    description: This data file provides global, regional, national, and sectoral estimates of greenhouse gas (GHG) emissions from 1970-2019
+
+    columns:
+      - name: gas
+        description: Greenhouse gas (CO2, CH4, N2O or Fgas)
+      - name: gwp100_ar5
+        description: Global warming potential with a 100 year time horizon, AR5 values
+      - name: value
+        description: Total value for each sector
+      - name: ISO
+        description: ISO 3166 3-letter code
+        tags: ['ISO']
+      - name: country
+        description: ISO 3166 country name
+        tags: ['ISO']
+      - name: region_ar6_6
+        description: IPCC ar6 6-region climate boundaries
+        tags: ['IPCC']
+      - name: region_ar6_10
+        description: IPCC ar6 10-region climate boundaries
+        tags: ['IPCC']
+      - name: region_ar6_22
+        description: IPCC ar6 22-region climate boundaries
+        tags: ['IPCC']
+      - name: region_ar6_dev
+        description: IPCC ar6 developed/ldc country
+        tags: ['IPCC']
+      - name: sector_title
+        description: IPCC ar6 5 Principal Sector Names
+        tags: ['IPCC']
+      - name: subsector_title
+        description: IPCC ar6 Sub-Sector Names
+        tags: ['IPCC']
+      - name: year
+        description: Year of Data Observation
+        tags: ['annual']
+
+  - name: essd_sectors
+    description: Emissions have been allocated to major sectors corresponding to the IPCC AR6 chapters on consultation with the chapter leads. A further breakdown by subsector is also available. A full list and description of how emissions codes match to sectors and subsectors is in the sector_classification tab.
+
+    columns:
+      - name: EDGAR_code
+        description: EDGAR Sector Coding [1-7][A-G][1-15][xx]
+        tags: ['EDGAR']
+      - name: fossil_bio
+        description: CO2e source - fossil or bio
+      - name: sector_title
+        description: IPCC ar6 Sector Names
+        tags: ['IPCC']
+      - name: description
+        description: IPCC Sector description
+        tags: ['IPCC']
+      - name: subsector_title
+        description: IPCC ar6 Sub-Sector Names
+        tags: ['IPCC']
+      - name: IPCC_2006
+        description: IPCC Sector Coding List [1-5].[A-G].[1-9].[a-h].[i-iii].[2-6]
+        tags: ['IPCC']
+
+  - name: essd_regions
+    description: Countries have been allocated to regions by the IPCC AR6 WGIII Technical Support Unit. A summary of the country and region codes is in the region_classification tab.
+
+    columns:
+      - name: ISO
+        description: ISO 3166 3-letter code
+        tags: ['ISO']
+      - name: name
+        description: ISO 3166 country name
+        tags: ['ISO']
+      - name: region_ar6_6
+        description: IPCC ar6 6-region climate boundaries
+        tags: ['IPCC']
+      - name: region_ar6_10
+        description: IPCC ar6 10-region climate boundaries
+        tags: ['IPCC']
+      - name: region_ar6_22
+        description: IPCC ar6 22-region climate boundaries
+        tags: ['IPCC']
+      - name: region_ar6_dev
+        description: IPCC ar6 developed/ldc country
+        tags: ['IPCC']
+
+  - name: essd_gwp_100yr
+    description: Countries have been allocated to regions by the IPCC AR6 WGIII Technical Support Unit. A summary of the country and region codes is in the region_classification tab.
+
+    columns:
+      - name: gas
+        description: GHG Gas Species
+        tags: ['GHG']
+      - name: gwp_ar5
+        description: IPCC AR5 Global Warming Potential multiplier (GWP)
+        tags: ['IPCC']
+      - name: units
+        description: tons of GHG Gas Species
+        tags: ['GHG']
+
+  - name: essd_ch4_gwp
+    description: Countries have been allocated to regions by the IPCC AR6 WGIII Technical Support Unit. A summary of the country and region codes is in the region_classification tab.
+
+    columns:
+      - name: sector_code
+        description: IPCC Sector Coding [1-7][A-G][1-15][xx]
+        tags: ['IPCC']
+      - name: fossil_bio
+        description: CO2e source - fossil or bio
+      - name: gas
+        description: GHG Gas Species
+        tags: ['GHG']
+      - name: gwp_ar5_feedbacks
+        description: IPCC AR5 Global Warming Potential Feedback multiplier (GWP)
+        tags: ['IPCC']
+      - name: gwp_ar5
+        description: IPCC AR5 Global Warming Potential multiplier (GWP)
+        tags: ['IPCC']
+      - name: description
+        description: IPCC Sector description
+        tags: ['IPCC']
+      - name: subsector
+        description: IPCC Sub-Sector description
+        tags: ['IPCC']
+      - name: chapter_title
+        description: IPCC ar6 Sector Names
+        tags: ['IPCC']
+      - name: subsector_title
+        description: IPCC ar6 Sub-Sector Names
+        tags: ['IPCC']
+
+  - name: essd_gwp100_data
+    description: This data file provides global, regional, national, and sectoral estimates of greenhouse gas (GHG) emissions from 1970-2019
+
+    columns:
+      - name: CO2
+        description: tons of CO2
+      - name: CH4
+        description: tons of CH4
+      - name: N2O
+        description: tons of N2O
+      - name: Fgas
+        description: tons of Fgas
+      - name: GHG
+        description: Total greenhouse gas emissions
+      - name: ISO
+        description: ISO 3166 3-letter code
+        tags: ['ISO']
+      - name: country
+        description: ISO 3166 country name
+        tags: ['ISO']
+      - name: region_ar6_6
+        description: IPCC ar6 6-region climate boundaries
+        tags: ['IPCC']
+      - name: region_ar6_10
+        description: IPCC ar6 10-region climate boundaries
+        tags: ['IPCC']
+      - name: region_ar6_22
+        description: IPCC ar6 22-region climate boundaries
+        tags: ['IPCC']
+      - name: region_ar6_dev
+        description: IPCC ar6 developed/ldc country
+        tags: ['IPCC']
+      - name: sector_title
+        description: IPCC ar6 5 Principal Sector Names
+        tags: ['IPCC']
+      - name: subsector_title
+        description: IPCC ar6 Sub-Sector Names
+        tags: ['IPCC']
+      - name: CO2_units
+        description: pint[t CO2]
+      - name: CH4_units
+        description: pint[t CH4]
+      - name: N2O_units
+        description: pint[t N2O]
+      - name: Fgas_units
+        description: pint[t Fgas]
+      - name: year
+        description: Year of Data Observation
+        tags: ['annual']
+
+  - name: essd_lulucf
+    description: This data file provides historical estimates of CO2 emissions from land use, land use change and forestry. It is based on three land use bookeeping models (BLUE, Houghton & Nassikas, OSCAR). Following a practice established by the global carbon budget, and recently the Working Group I of the IPCC (6th Assessment Report), CO2-LULUCF emissions are taken as the mean of these three models.
+
+    columns:
+      - name: region_ar6_6
+        description: IPCC ar6 6-region climate boundaries
+        tags: ['IPCC']
+      - name: region_ar6_10
+        description: IPCC ar6 10-region climate boundaries
+        tags: ['IPCC']
+      - name: blue
+        description: land use bookkeeping model BLUE
+      - name: houghton
+        description: land use bookkeeping model of Houghton & Nassikas
+      - name: oscar
+        description: land use bookkeeping model OSCAR
+      - name: mean
+        description: land use bookkeeping model mean of (BLUE, Houghton & Nassikas, OSCAR)
+      - name: blue_units
+        description: pint[t CO2]
+      - name: houghton_units
+        description: pint[t CO2]
+      - name: oscar_units
+        description: pint[t CO2]
+      - name: mean_units
+        description: pint[t CO2]
+      - name: year
+        description: Year of Data Observation
+        tags: ['annual']
+
