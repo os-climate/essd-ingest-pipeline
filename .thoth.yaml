@@ -19,7 +19,8 @@ managers:
   - name: version
     configuration:
       maintainers:
-        - tumido
+        - MichaelTiemannoSC
+        - mersin35
       assignees:
         - sesheta
       labels: [bot]
