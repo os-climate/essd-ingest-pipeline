@@ -7,10 +7,26 @@ verify_ssl = true
 flake8 = "*"
 coverage = "*"
 Sphinx = "*"
+markupsafe = "==2.1.1"
 
 [packages]
 src = {editable = true, path = "./"}
 awscli = "*"
+dbt-core = {editable = true, path = "/opt/app-root/src/dbt-core/core/"}
+dbt-extractor = "==0.4.1"
+dbt-trino = {editable = true, path = "/opt/app-root/src/dbt-trino/"}
+python-dotenv = "*"
+osc-ingest-tools = "*"
+"pandas-profiling[notebook]" = "*"
+pyarrow = "==9.0.0"
+grpcio-health-checking = "==1.48.2"
+python-pachyderm = "*"
+iam-units = "*"
+openpyxl = "*"
+openscm-units = "*"
+Pint= "*"
+Pint-Pandas = "*"
+markupsafe = "==2.1.1"
 
 [requires]
 python_version = "3.8"
