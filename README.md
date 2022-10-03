@@ -1,74 +1,22 @@
-project-template
+ESSD Ingestion Pipeline
 ==============================
 
-template for the team to use
+[Earth System Science Data](https://www.earth-system-science-data.net/) (ESSD) is an international, interdisciplinary journal for the publication of articles on original research data (sets), furthering the reuse of high-quality data of benefit to Earth system sciences.  Its open data licensing and high-quality data sources and editorial review processes make it an excellent source of data for the [Data Commons](https://github.com/os-climate/os_c_data_commons) in general, and for region-based GHG timeseries data in particular.
 
-Project Organization
-------------
+This data pipeline was initially forked from the AI CoE [project template](https://github.com/aicoe-aiops/project-template), which is geared toward AI/ML data extraction.  The ESSD data is already highly curated, and so we don't really use much of that structure here.  However, by having a common build and run environment, the pipeline is friendly to our CI/CD systems, GitHub, and help connect all the pipelines to the Data Commons in a consistent fashion.
 
-    ├── LICENSE
-    ├── Makefile                                <- Makefile with commands like `make data` or `make train`
-    ├── Pipfile                                 <- Pipfile stating package configuration as used by Pipenv.
-    ├── Pipfile.lock                            <- Pipfile.lock stating a pinned down software stack with as used by Pipenv.
-    ├── README.md                               <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external                            <- Data from third party sources.
-    │   ├── interim                             <- Intermediate data that has been transformed.
-    │   ├── processed                           <- The final, canonical data sets for modeling.
-    │   └── raw                                 <- The original, immutable data dump.
-    │
-    ├── docs                                    <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models                                  <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks                               <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                                               the creator's initials, and a short `-` delimited description, e.g.
-    │                                               `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references                              <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports                                 <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures                             <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt                        <- The requirements file stating direct dependencies if a library
-    │                                               is developed.
-    │
-    ├── setup.py                                <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                                     <- Source code for use in this project.
-    │   ├── __init__.py                         <- Makes src a Python module
-    │   │
-    │   ├── data                                <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features                            <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models                              <- Scripts to train models and then use trained models to make
-    │   │   │                                       predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization                       <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    ├── .thoth.yaml                             <- Thoth's configuration file
-    ├── .aicoe-ci.yaml                          <- AICoE CI configuration file (https://github.com/AICoE/aicoe-ci)
-    │
-    ├── .github                                 <- GitHub configuration folder
-    │   ├── PULL_REQUEST_TEMPLATE               <- GitHub templates for pull requests
-    │   │
-    │   ├── ISSUE_TEMPLATE                      <- GitHub templates for issues
-    |       ├── {major|minor|patch}_release.md  <- If Khebut GitHub App Bot (https://github.com/apps/khebhut) is installed, the issue will trigger a major|minor|patch release.
-    │       |                                       The bot will open a Pull Request to update the CHANGELOG and fix the opened issue.
-    │       |                                       NOTE: only users that are allowed to release (a.k.a. maintainers specified in the .thoth.yaml file) should open the issue, otherwise bot will
-    │       |                                       reject them, commenting and closing the issue.
-    │       |                                       If AICoE CI GitHub App (https://github.com/apps/aicoe-ci) is installed, once the pull request is merged a new tag is created by the bot
-    │       |                                       and the pipeline to build and push image starts.
-    │       |
-    |       └── redeliver_container_image.md    <- If the tag exists and AICoE CI GitHub App (https://github.com/apps/aicoe-ci) is installed, the issue will retrigger the pipeline to build and
-    │                                               push image container image. NOTE: It should be used if the pipeline triggered with the {major|minor|patch}_release failed for any reason.
-    |
-    └── tox.ini                                 <- tox file with settings for running tox; see tox.readthedocs.io
+The principal ingestion code can be found in the [notebooks](notebooks) directory.  At present there are two steps in the pipeline:
+1. Extract (which copies data into a Pachyderm repository to support data reproducibility)
+2. Load (which loads data into Trino, builds the DBT transformas, and initializes metadata for Open Metadata).
+
+A third pipeline step may be to elaborate and curate the metadata to better support an ever-expanding Data Catalog.
+
+The data transformation step runs from the [dbt/essd_transform](dbt/essd_transform) directory and is/will be documented there.
+
+Metadata for the tables we have ingested can be viewed from our [OpenMetadata portal](https://openmetadata-openmetadata.apps.odh-cl2.apps.os-climate.org/explore/tables/?searchFilter=databaseschema%3Dessd) (GitHub User ID and ODH User access tokens required).
+
+If you have questions, please file [Issues](https://github.com/os-climate/essd-ingest-pipeline/issues).  If you have answers, please contribute [Pull Requests](https://github.com/os-climate/essd-ingest-pipeline/pulls)!
+
 
 --------
 
