@@ -50,7 +50,6 @@ openscm-units==0.5.2
 osc-ingest-tools==0.5.3
 pandas==2.2.1
 pandas-stubs==2.2.1.240316
-pandas_profiling==3.2.0
 Pint==0.23
 Pint-Pandas==0.5
 plotly==5.21.0
@@ -76,3 +75,4 @@ trino==0.328.0
 uncertainties==3.1.7
 Werkzeug
 wheel==0.43.0
+ydata-profiling-4.7.0
