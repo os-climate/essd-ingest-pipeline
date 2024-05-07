@@ -8,4 +8,3 @@ with source_data as (
     from osc_datacommons_dev.essd.sectors_source
 )
 select * from source_data
-

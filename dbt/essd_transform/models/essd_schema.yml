@@ -208,4 +208,3 @@ models:
       - name: year
         description: Year of Data Observation
         tags: ['annual']
-
